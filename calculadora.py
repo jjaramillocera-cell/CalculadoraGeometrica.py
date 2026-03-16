@@ -58,7 +58,7 @@ while True:
             print("2. Cuadrado")
             print("3. Rectangulo")
             print("4. Triangulo rectangulo")
-            print("5. Triangulo irregular")
+            print("5. Triangulo")
             print("6. Volver")
 
             try:
@@ -137,25 +137,60 @@ while True:
 
             elif op2 == 4:
 
-                try:
-                    base = abs(float(input("Ingrese la base: ")))
-                    altura = abs(float(input("Ingrese la altura: ")))
-                except:
-                    print("Error: debe ingresar numeros")
-                    continue
+                while True:
 
-                # A = (base * altura) / 2
-                area = (base * altura) / 2
+                    print("\n--- TRIANGULO RECTANGULO ---")
+                    print("1. Calcular lados")
+                    print("2. Calcular angulos")
+                    print("3. Volver")
 
-                # Hipotenusa
-                # √(base² + altura²)
-                hipotenusa = (base**2 + altura**2)**0.5
-
-                print("Area:", area)
-                print("Hipotenusa:", hipotenusa)
+                    try:
+                        op_tr = int(input("Seleccione una opcion: "))
+                    except:
+                        print("Error: debe ingresar un numero")
+                        continue
 
 
-# ---- TRIANGULO IRREGULAR ----
+                    if op_tr == 1:
+
+                        try:
+                            base = abs(float(input("Ingrese base (adyacente): ")))
+                            altura = abs(float(input("Ingrese altura (opuesto): ")))
+                        except:
+                            print("Error: debe ingresar numeros")
+                            continue
+
+                        # A = (base * altura) / 2
+                        area = (base * altura) / 2
+
+                        # √(base² + altura²)
+                        hipotenusa = (base**2 + altura**2)**0.5
+
+                        print("Area:", area)
+                        print("Hipotenusa:", hipotenusa)
+
+
+                    elif op_tr == 2:
+
+                        try:
+                            angulo = abs(float(input("Ingrese angulo : ")))
+                            
+                        except:
+                            print("Error: debe ingresar numeros")
+                            continue
+
+                        
+                        angulo = 90 - angulo
+
+                        print("Angulo:", angulo)
+                        
+
+
+                    elif op_tr == 3:
+                        break
+
+
+# ---- TRIANGULO GENERAL ----
 
             elif op2 == 5:
 
@@ -167,6 +202,19 @@ while True:
                     print("Error: debe ingresar numeros")
                     continue
 
+                try:
+                    ang1 = abs(float(input("Ingrese angulo 1: ")))
+                    ang2 = abs(float(input("Ingrese angulo 2: ")))
+                    
+                except:
+                    print("Error: debe ingresar numeros")
+                    continue
+
+                if ang1 + ang2  > 180:
+                    print("Error: la suma de los angulos no puede ser mayor a 180°")
+                    continue
+                ang3 = 180 - (ang1 + ang2)
+                
                 # s = (a+b+c)/2
                 s = (a + b + c) / 2
 
@@ -175,6 +223,7 @@ while True:
 
                 print("Area:", area)
                 print("Perimetro:", a+b+c)
+                print("El angulo es: ", ang3)
 
 
             elif op2 == 6:
